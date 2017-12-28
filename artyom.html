@@ -60,47 +60,55 @@
           artyom.say("Its a warm night! Sleep well");
         }
       }
+    },
+    //smart commands
+    {
+      smart: true,
+      indexes: ["Find me *", "Find *"],
+      action: function(i, wildcard){
+        artyom.say(`Hi! We have found some special ${wildcard} just for you!`);
+      }
     }
-  ];
-  
-  artyom.addCommands(myGroup); 
-  
-  
-  
-  
-  
-  /*
-  (function() {
-  const mySiri = new Artyom();
-  window.mySiri = mySiri;
-  
-  // 
-  // // Add a single command
-  // var commandHello = {
-  //   indexes:["hello","good morning","hey"], // These spoken words will trigger the execution of the command
-  //   action:function(){ // Action to be executed when a index match with spoken word
-  //     window.mySiri.say("Hey buddy ! How are you today?");
-  //   }
-  // };
-  // 
-  // window.mySiri.addCommands(commandHello); // Add the command with addCommands method. Now
-  // 
-  // Or add multiple commands at time
-  
-  var myGroup = [
-  {
-  description:"If my database contains the name of a person say something",
-  smart:true, // a Smart command allow you to use wildcard in order to retrieve words that the user should say
-  // Ways to trigger the command with the voice
-  indexes:["Do you know who is *","I don't know who is *","Is * a good person"],
-  // Do something when the commands is triggered
-  action:function(i,wildcard){
-  var database = ["Carlos","Bruce","David","Joseph","Kenny"];
-  
-  //If the command "is xxx a good person" is triggered do, else
-  if(i == 2){
-  if(database.indexOf(wildcard.trim())){
-  window.mySiri.say("I'm a machine, I dont know what is a feeling");
+];
+
+artyom.addCommands(myGroup); 
+
+
+
+
+
+/*
+(function() {
+const mySiri = new Artyom();
+window.mySiri = mySiri;
+
+// 
+// // Add a single command
+// var commandHello = {
+//   indexes:["hello","good morning","hey"], // These spoken words will trigger the execution of the command
+//   action:function(){ // Action to be executed when a index match with spoken word
+//     window.mySiri.say("Hey buddy ! How are you today?");
+//   }
+// };
+// 
+// window.mySiri.addCommands(commandHello); // Add the command with addCommands method. Now
+// 
+// Or add multiple commands at time
+
+var myGroup = [
+{
+description:"If my database contains the name of a person say something",
+smart:true, // a Smart command allow you to use wildcard in order to retrieve words that the user should say
+// Ways to trigger the command with the voice
+indexes:["Do you know who is *","I don't know who is *","Is * a good person"],
+// Do something when the commands is triggered
+action:function(i,wildcard){
+var database = ["Carlos","Bruce","David","Joseph","Kenny"];
+
+//If the command "is xxx a good person" is triggered do, else
+if(i == 2){
+if(database.indexOf(wildcard.trim())){
+window.mySiri.say("I'm a machine, I dont know what is a feeling");
 }else{
 window.mySiri.say("I don't know who is " + wildcard + " and i cannot say if is a good person");
 }
